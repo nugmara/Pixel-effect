@@ -1,4 +1,12 @@
 const canvas = document.getElementById("canvas1")
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+const img = new Image()
+img.src = "./images/h-removebg-preview.png";
+
+img.onload = () => {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+
+}
