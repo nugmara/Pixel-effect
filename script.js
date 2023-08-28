@@ -23,6 +23,12 @@ class Particle {
         }
         this.brightness = brightnessArray[Math.floor(this.y - 1) * canvas.width + Math.floor(this.x)]
     }
+    draw() {
+        ctx.beginPath()
+        ctx.fillStyle = "white";
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill()
+    }
 }
 
 img.onload = () => {
