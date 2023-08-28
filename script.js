@@ -49,7 +49,7 @@ img.onload = () => {
 
     // generate 10.000 particles 
     for (let i = 0; i < 10000; i++) {
-        // particlesArray.push(new Particle()) 
+        particlesArray.push(new Particle()) 
     }
 
     const animate = () => {
