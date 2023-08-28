@@ -51,4 +51,17 @@ img.onload = () => {
     for (let i = 0; i < 10000; i++) {
         // particlesArray.push(new Particle()) 
     }
+
+    const animate = () => {
+        ctx.globalAlpha = 0.05;
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0 , canvas.width, canvas.height)
+        particlesArray.forEach((particle) => {
+            particle.update()
+            ctx.globalAlpha = particle.brightness * 0.001;
+            particle.draw()
+        })
+        requestAnimationFrame(animate)
+    }
+    animate()
 }
