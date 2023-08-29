@@ -6,6 +6,7 @@ img.src = "./images/h-removebg-preview.png";
 
 let brightnessArray = []
 let particlesArray = [];
+let rgbaArray = [];
 
 class Particle {
     constructor() {
@@ -25,7 +26,7 @@ class Particle {
     }
     draw() {
         ctx.beginPath()
-        ctx.fillStyle = "white";
+        ctx.fillStyle = rgbaArray[Math.floor(this.y - 1) * canvas.width + Math.floor(this.x)];
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
         ctx.fill()
     }
@@ -36,7 +37,8 @@ img.onload = () => {
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    console.log(imgData.data) // red green blue alpha 0 .25
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    // console.log(imgData.data) // red green blue alpha 0 .25
 
     for (let i = 0; i < imgData.data.length; i++) {
         const red = imgData.data[i*4];
@@ -45,6 +47,8 @@ img.onload = () => {
         // const alpha = imgData.data[(i*4) + 3];
         const brightness = (red + green + blue) / 3;
         brightnessArray.push(brightness)   
+        rgbaArray.push(`rgb(${red}, ${green}, ${blue})`)
+
     }
 
     // generate 10.000 particles 
