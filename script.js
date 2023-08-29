@@ -62,7 +62,7 @@ img.onload = () => {
         ctx.fillRect(0, 0 , canvas.width, canvas.height)
         particlesArray.forEach((particle) => {
             particle.update()
-            ctx.globalAlpha = particle.brightness * 0.001;
+            ctx.globalAlpha = particle.brightness * 0.003;
             particle.draw()
         })
         requestAnimationFrame(animate)
